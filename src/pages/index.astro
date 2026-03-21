@@ -1,5 +1,6 @@
 ---
 import DocsLayout from '../layouts/DocsLayout.astro';
+const baseUrl = import.meta.env.BASE_URL;
 ---
 <DocsLayout title="OpenClaw Docs">
   <div class="hero">
@@ -22,6 +23,6 @@ import DocsLayout from '../layouts/DocsLayout.astro';
   </p>
 
   <p>
-    Start with <a href={`${Astro.base}/docs/how-openclaw-works`}>How OpenClaw Works</a>.
+    Start with <a href={`${baseUrl}docs/how-openclaw-works`}>How OpenClaw Works</a>.
   </p>
 </DocsLayout>
