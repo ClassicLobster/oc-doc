@@ -15,4 +15,4 @@ npm run dev
 npm run build
 ```
 
-The site is configured for GitHub Pages with the `/oc-doc` base path.
+The site is configured for GitHub Pages root-relative deployment.
