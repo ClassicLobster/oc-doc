@@ -1,0 +1,27 @@
+---
+import DocsLayout from '../layouts/DocsLayout.astro';
+---
+<DocsLayout title="OpenClaw Docs">
+  <div class="hero">
+    <h1>OpenClaw documentation</h1>
+    <p class="muted">A lightweight Astro-powered static site that explains what OpenClaw is, how it works, and how the core pieces fit together.</p>
+  </div>
+
+  <h2>What this site contains</h2>
+  <ul>
+    <li>A plain-English explanation of the OpenClaw model</li>
+    <li>Core architecture concepts</li>
+    <li>How channels, sessions, and memory interact</li>
+    <li>How automation works with cron jobs and heartbeat checks</li>
+  </ul>
+
+  <h2>Why Astro</h2>
+  <p>
+    Astro is a nice fit here because it generates a static site, keeps the repo simple,
+    and works cleanly with GitHub Pages.
+  </p>
+
+  <p>
+    Start with <a href={`${Astro.base}/docs/how-openclaw-works`}>How OpenClaw Works</a>.
+  </p>
+</DocsLayout>
