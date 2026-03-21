@@ -1,5 +1,6 @@
 ---
 const { title = 'OpenClaw Docs' } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
 <!doctype html>
 <html lang="en">
@@ -117,11 +118,11 @@ const { title = 'OpenClaw Docs' } = Astro.props;
         <aside>
           <nav>
             <ul>
-              <li><a href={`${Astro.base}/`} class={Astro.url.pathname === `${Astro.base}/` ? 'active' : ''}>Home</a></li>
-              <li><a href={`${Astro.base}/docs/how-openclaw-works`} class={Astro.url.pathname.includes('/docs/how-openclaw-works') ? 'active' : ''}>How OpenClaw Works</a></li>
-              <li><a href={`${Astro.base}/docs/architecture`} class={Astro.url.pathname.includes('/docs/architecture') ? 'active' : ''}>Architecture</a></li>
-              <li><a href={`${Astro.base}/docs/channels-sessions-memory`} class={Astro.url.pathname.includes('/docs/channels-sessions-memory') ? 'active' : ''}>Channels, Sessions, Memory</a></li>
-              <li><a href={`${Astro.base}/docs/automation`} class={Astro.url.pathname.includes('/docs/automation') ? 'active' : ''}>Automation</a></li>
+              <li><a href={baseUrl} class={Astro.url.pathname === baseUrl ? 'active' : ''}>Home</a></li>
+              <li><a href={`${baseUrl}docs/how-openclaw-works/`} class={Astro.url.pathname.includes('/docs/how-openclaw-works') ? 'active' : ''}>How OpenClaw Works</a></li>
+              <li><a href={`${baseUrl}docs/architecture/`} class={Astro.url.pathname.includes('/docs/architecture') ? 'active' : ''}>Architecture</a></li>
+              <li><a href={`${baseUrl}docs/channels-sessions-memory/`} class={Astro.url.pathname.includes('/docs/channels-sessions-memory') ? 'active' : ''}>Channels, Sessions, Memory</a></li>
+              <li><a href={`${baseUrl}docs/automation/`} class={Astro.url.pathname.includes('/docs/automation') ? 'active' : ''}>Automation</a></li>
             </ul>
           </nav>
         </aside>
