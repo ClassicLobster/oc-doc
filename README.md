@@ -1,5 +1,7 @@
 # oc-doc
 
+OpenClaw docs site: https://classiclobster.github.io/oc-doc/
+
 Astro-based static documentation site for OpenClaw concepts and workflows.
 
 ## Development
