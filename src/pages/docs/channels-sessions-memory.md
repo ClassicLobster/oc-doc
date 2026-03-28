@@ -1,6 +1,13 @@
 ---
 layout: ../../layouts/DocsLayout.astro
 title: Channels, Sessions, and Memory
+flashCards:
+  - question: What do channels do?
+    answer: Channels are the entry and exit points for messages, like Discord, Telegram, WhatsApp, or a local UI.
+  - question: What is a session?
+    answer: A session stores continuity such as recent turns, tool traces, routing metadata, and the working context for a conversation.
+  - question: What does memory usually contain?
+    answer: File-based memory often includes daily notes, long-term memory files, and workspace documents the agent can read and update.
 ---
 
 # Channels, sessions, and memory

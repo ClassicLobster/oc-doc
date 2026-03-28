@@ -1,5 +1,5 @@
 ---
-const { title = 'OpenClaw Docs' } = Astro.props;
+const { title = 'OpenClaw Docs', flashCards = [] } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
 <!doctype html>
@@ -99,6 +99,33 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_UR
         margin-bottom: 24px;
       }
       :global(.muted) { color: var(--muted); }
+      :global(.flash-cards) {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border);
+      }
+      :global(.flash-card-list) {
+        display: grid;
+        gap: 14px;
+        margin: 0;
+      }
+      :global(.flash-card) {
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 16px 18px;
+        background: rgba(15, 23, 42, .65);
+      }
+      :global(.flash-card summary) {
+        cursor: pointer;
+        font-weight: 700;
+        color: var(--text);
+        list-style: none;
+      }
+      :global(.flash-card summary::-webkit-details-marker) { display: none; }
+      :global(.flash-card .answer) {
+        margin-top: 10px;
+        color: var(--muted);
+      }
       @media (max-width: 900px) {
         .layout { grid-template-columns: 1fr; }
         aside { position: static; }
@@ -122,12 +149,26 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_UR
               <li><a href={`${baseUrl}docs/how-openclaw-works/`} class={Astro.url.pathname.includes('/docs/how-openclaw-works') ? 'active' : ''}>How OpenClaw Works</a></li>
               <li><a href={`${baseUrl}docs/architecture/`} class={Astro.url.pathname.includes('/docs/architecture') ? 'active' : ''}>Architecture</a></li>
               <li><a href={`${baseUrl}docs/channels-sessions-memory/`} class={Astro.url.pathname.includes('/docs/channels-sessions-memory') ? 'active' : ''}>Channels, Sessions, Memory</a></li>
+              <li><a href={`${baseUrl}docs/context/`} class={Astro.url.pathname.includes('/docs/context') ? 'active' : ''}>Context</a></li>
               <li><a href={`${baseUrl}docs/automation/`} class={Astro.url.pathname.includes('/docs/automation') ? 'active' : ''}>Automation</a></li>
             </ul>
           </nav>
         </aside>
         <main>
           <slot />
+          {flashCards.length > 0 && (
+            <section class="flash-cards">
+              <h2>Flash Cards</h2>
+              <div class="flash-card-list">
+                {flashCards.map((card) => (
+                  <details class="flash-card">
+                    <summary>{card.question}</summary>
+                    <div class="answer">{card.answer}</div>
+                  </details>
+                ))}
+              </div>
+            </section>
+          )}
         </main>
       </div>
     </div>
