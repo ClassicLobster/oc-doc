@@ -1,6 +1,15 @@
 ---
 layout: ../../layouts/DocsLayout.astro
 title: How Context Works
+flashCards:
+  - question: What is context in OpenClaw?
+    answer: Context is the working memory the agent sees during a run, including the current message, recent turns, instructions, files, memory, and tool output.
+  - question: What can fill up context?
+    answer: Long conversations, large tool outputs, long prompts, pasted logs, documents, and repeated memory or history injection.
+  - question: How can you calculate available room in context?
+    answer: Available room is the context window minus the tokens already used by instructions, messages, files, and tool output.
+  - question: What is a practical way to reset context?
+    answer: Start a new session, use a reset command like /new or /reset, or reduce what gets injected from memory and tools.
 ---
 
 # How context works in OpenClaw

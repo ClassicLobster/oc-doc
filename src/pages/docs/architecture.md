@@ -1,6 +1,13 @@
 ---
 layout: ../../layouts/DocsLayout.astro
 title: Architecture
+flashCards:
+  - question: What are the major layers in OpenClaw architecture?
+    answer: Gateway, agents, tools, channels, and workspace plus memory.
+  - question: What does the gateway do?
+    answer: It centralizes session state, routing, auth, connected channels, and reliable agent execution.
+  - question: What is the request flow?
+    answer: Channel → Gateway → Agent session → Model plus tools → Final response → Delivery.
 ---
 
 # Architecture

@@ -1,6 +1,13 @@
 ---
 layout: ../../layouts/DocsLayout.astro
 title: How OpenClaw Works
+flashCards:
+  - question: What is OpenClaw in one sentence?
+    answer: OpenClaw is a self-hosted AI agent system that routes messages into sessions, uses tools, and replies through different channels.
+  - question: What are the core parts of the basic loop?
+    answer: Message in, route to session, load context, let the model decide on tools or a direct reply, then deliver the result back out.
+  - question: Why does OpenClaw matter as a system?
+    answer: It provides coordination, persistence, routing, automation, and tool access instead of behaving like a one-shot chatbot.
 ---
 
 # How OpenClaw works

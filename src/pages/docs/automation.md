@@ -1,6 +1,13 @@
 ---
 layout: ../../layouts/DocsLayout.astro
 title: Automation
+flashCards:
+  - question: When should you use cron jobs?
+    answer: Use cron jobs when the schedule needs to be precise, like a daily brief at a specific time.
+  - question: When are heartbeats a better fit?
+    answer: Heartbeats work better for lightweight checks that can drift a bit and only need to speak up when something matters.
+  - question: What is a simple equation for automation choice?
+    answer: Precision needed plus fixed schedule points to cron; flexible periodic checking points to heartbeat.
 ---
 
 # Automation
