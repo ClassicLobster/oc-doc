@@ -173,6 +173,10 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_UR
             <div class="nav-section">AI</div>
             <ul>
               <li><a href={`${baseUrl}docs/ai-inference/`} class={Astro.url.pathname.includes('/docs/ai-inference') ? 'active' : ''}>AI Inference</a></li>
+              <li><a href={`${baseUrl}docs/ai-prompt-caching/`} class={Astro.url.pathname.includes('/docs/ai-prompt-caching') ? 'active' : ''}>Prompt Caching</a></li>
+              <li><a href={`${baseUrl}docs/ai-embeddings/`} class={Astro.url.pathname.includes('/docs/ai-embeddings') ? 'active' : ''}>Embeddings</a></li>
+              <li><a href={`${baseUrl}docs/ai-fine-tuning/`} class={Astro.url.pathname.includes('/docs/ai-fine-tuning') ? 'active' : ''}>Fine-Tuning</a></li>
+              <li><a href={`${baseUrl}docs/ai-batching-kv-cache/`} class={Astro.url.pathname.includes('/docs/ai-batching-kv-cache') ? 'active' : ''}>Batching and KV Cache</a></li>
             </ul>
           </nav>
         </aside>
