@@ -41,13 +41,13 @@ That will create a page at:
 /oc-doc/docs/my-new-topic/
 ```
 
-2. Add a navigation link in:
+2. Add a navigation entry in:
 
 ```bash
-src/layouts/DocsLayout.astro
+src/lib/docs-nav.ts
 ```
 
-The sidebar navigation is currently hard-coded there, so creating the Markdown file alone is not enough if you want it to show up in the left nav.
+The sidebar navigation is rendered from that shared nav config.
 
 ### Current doc structure
 
@@ -62,7 +62,7 @@ Existing docs live here:
 ### Example workflow
 
 1. Create `src/pages/docs/example.md`
-2. Add a matching sidebar link in `src/layouts/DocsLayout.astro`
+2. Add a matching nav entry in `src/lib/docs-nav.ts`
 3. Run:
 
 ```bash
