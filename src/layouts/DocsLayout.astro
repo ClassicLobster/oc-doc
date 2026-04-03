@@ -169,6 +169,11 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_UR
             <ul>
               <li><a href={`${baseUrl}docs/claude-subagents/`} class={Astro.url.pathname.includes('/docs/claude-subagents') ? 'active' : ''}>Claude Subagents</a></li>
             </ul>
+
+            <div class="nav-section">AI</div>
+            <ul>
+              <li><a href={`${baseUrl}docs/ai-inference/`} class={Astro.url.pathname.includes('/docs/ai-inference') ? 'active' : ''}>AI Inference</a></li>
+            </ul>
           </nav>
         </aside>
         <main>
