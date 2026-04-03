@@ -1,6 +1,9 @@
 ---
+import { docsNavSections } from '../lib/docs-nav';
+
 const { title = 'OpenClaw Docs', flashCards = [] } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const homeIsActive = Astro.url.pathname === baseUrl;
 ---
 <!doctype html>
 <html lang="en">
@@ -65,6 +68,20 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_UR
         height: fit-content;
         max-height: calc(100vh - 48px);
         overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: var(--border) transparent;
+      }
+      aside::-webkit-scrollbar {
+        width: 10px;
+      }
+      aside::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      aside::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 999px;
+        border: 2px solid transparent;
+        background-clip: padding-box;
       }
       main { padding: 28px; }
       nav ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
@@ -80,13 +97,48 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_UR
         background: var(--panel-2);
         text-decoration: none;
       }
-      .nav-section {
+      .nav-group {
         margin-top: 16px;
+      }
+      .nav-group details {
+        border-radius: 14px;
+        border: 1px solid transparent;
+      }
+      .nav-group details[open] {
+        border-color: rgba(255,255,255,.04);
+      }
+      .nav-group summary {
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 12px;
+        border-radius: 12px;
         font-size: 0.82rem;
         font-weight: 800;
         letter-spacing: 0.06em;
         text-transform: uppercase;
         color: var(--muted);
+        user-select: none;
+      }
+      .nav-group summary:hover {
+        background: rgba(255,255,255,.03);
+      }
+      .nav-group summary::-webkit-details-marker {
+        display: none;
+      }
+      .nav-group summary::after {
+        content: '▾';
+        font-size: 0.9rem;
+        opacity: 0.75;
+      }
+      .nav-group details:not([open]) summary::after {
+        content: '▸';
+      }
+      .nav-group ul {
+        margin-top: 6px;
       }
       h1, h2, h3 { line-height: 1.2; }
       h1 { font-size: 2.2rem; margin-top: 0; }
@@ -164,37 +216,31 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_UR
         <aside>
           <nav>
             <ul>
-              <li><a href={baseUrl} class={Astro.url.pathname === baseUrl ? 'active' : ''}>Home</a></li>
+              <li><a href={baseUrl} class={homeIsActive ? 'active' : ''}>Home</a></li>
             </ul>
 
-            <div class="nav-section">OpenClaw</div>
-            <ul>
-              <li><a href={`${baseUrl}docs/how-openclaw-works/`} class={Astro.url.pathname.includes('/docs/how-openclaw-works') ? 'active' : ''}>How OpenClaw Works</a></li>
-              <li><a href={`${baseUrl}docs/architecture/`} class={Astro.url.pathname.includes('/docs/architecture') ? 'active' : ''}>Architecture</a></li>
-              <li><a href={`${baseUrl}docs/channels-sessions-memory/`} class={Astro.url.pathname.includes('/docs/channels-sessions-memory') ? 'active' : ''}>Channels, Sessions, Memory</a></li>
-              <li><a href={`${baseUrl}docs/context/`} class={Astro.url.pathname.includes('/docs/context') ? 'active' : ''}>Context</a></li>
-              <li><a href={`${baseUrl}docs/automation/`} class={Astro.url.pathname.includes('/docs/automation') ? 'active' : ''}>Automation</a></li>
-            </ul>
-
-            <div class="nav-section">Claude</div>
-            <ul>
-              <li><a href={`${baseUrl}docs/claude-subagents/`} class={Astro.url.pathname.includes('/docs/claude-subagents') ? 'active' : ''}>Claude Subagents</a></li>
-            </ul>
-
-            <div class="nav-section">AI</div>
-            <ul>
-              <li><a href={`${baseUrl}docs/ai-inference/`} class={Astro.url.pathname.includes('/docs/ai-inference') ? 'active' : ''}>AI Inference</a></li>
-              <li><a href={`${baseUrl}docs/ai-tokenization/`} class={Astro.url.pathname.includes('/docs/ai-tokenization') ? 'active' : ''}>Tokenization</a></li>
-              <li><a href={`${baseUrl}docs/ai-transformers-attention/`} class={Astro.url.pathname.includes('/docs/ai-transformers-attention') ? 'active' : ''}>Transformers and Attention</a></li>
-              <li><a href={`${baseUrl}docs/ai-attention-is-all-you-need/`} class={Astro.url.pathname.includes('/docs/ai-attention-is-all-you-need') ? 'active' : ''}>Attention Is All You Need</a></li>
-              <li><a href={`${baseUrl}docs/ai-prompt-caching/`} class={Astro.url.pathname.includes('/docs/ai-prompt-caching') ? 'active' : ''}>Prompt Caching</a></li>
-              <li><a href={`${baseUrl}docs/ai-embeddings/`} class={Astro.url.pathname.includes('/docs/ai-embeddings') ? 'active' : ''}>Embeddings</a></li>
-              <li><a href={`${baseUrl}docs/ai-fine-tuning/`} class={Astro.url.pathname.includes('/docs/ai-fine-tuning') ? 'active' : ''}>Fine-Tuning</a></li>
-              <li><a href={`${baseUrl}docs/ai-model-distillation/`} class={Astro.url.pathname.includes('/docs/ai-model-distillation') ? 'active' : ''}>Model Distillation</a></li>
-              <li><a href={`${baseUrl}docs/ai-quantization/`} class={Astro.url.pathname.includes('/docs/ai-quantization') ? 'active' : ''}>Quantization</a></li>
-              <li><a href={`${baseUrl}docs/ai-batching-kv-cache/`} class={Astro.url.pathname.includes('/docs/ai-batching-kv-cache') ? 'active' : ''}>Batching and KV Cache</a></li>
-              <li><a href={`${baseUrl}docs/ai-pytorch-vs-tensorflow/`} class={Astro.url.pathname.includes('/docs/ai-pytorch-vs-tensorflow') ? 'active' : ''}>PyTorch vs TensorFlow</a></li>
-            </ul>
+            {docsNavSections.map((section) => {
+              const isSectionActive = section.items.some((item) => Astro.url.pathname.includes(item.match));
+              return (
+                <div class="nav-group">
+                  <details open={isSectionActive || undefined}>
+                    <summary>{section.title}</summary>
+                    <ul>
+                      {section.items.map((item) => (
+                        <li>
+                          <a
+                            href={`${baseUrl}${item.href}`}
+                            class={Astro.url.pathname.includes(item.match) ? 'active' : ''}
+                          >
+                            {item.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                </div>
+              );
+            })}
           </nav>
         </aside>
         <main>
